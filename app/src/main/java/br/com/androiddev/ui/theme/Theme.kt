@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -19,8 +20,14 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = Aqua,
+    onPrimary = Color.White,
     secondary = AquaLight,
-    tertiary = LightBlue
+    onSecondary = Color.Black,
+    tertiary = LightBlue,
+    onTertiary = Color.Black,
+    background = Color(0xFFF7F9FA),
+    onBackground = Color(0xFF1B1B1D),
+    onSurface = Color(0xFF9AFFFA)
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -37,7 +44,7 @@ private val LightColorScheme = lightColorScheme(
 fun ColetaCertaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
