@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Create
@@ -53,116 +54,125 @@ fun MainScreen(navController: NavController) {
             BottomNavigationBar(navController = navController)
         }
     ) { paddingValues ->
-        Column(
+        // Use a LazyColumn to allow scrolling if content overflows
+        LazyColumn(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp) // Space between items
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp) // Ajuste de espaçamento entre os botões
-            ) {
-                RoundedButton(
-                    icon = Icons.Default.LocationOn,
-                    text = "Ecopontos",
-                    onClick = { navController.navigate("addressList") }
-                )
-                RoundedButton(
-                    icon = Icons.Default.Refresh,
-                    text = "Materiais",
-                    onClick = { /* Ação para Materiais */ }
-                )
-                RoundedButton(
-                    icon = Icons.Default.Delete,
-                    text = "Nova coleta",
-                    onClick = { /* Ação para Nova coleta */ }
-                )
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                RoundedButton(
-                    icon = Icons.Default.Warning,
-                    text = "Manuseio",
-                    onClick = { /* Ação para Manuseio */ }
-                )
-                RoundedButton(
-                    icon = Icons.Default.Info,
-                    text = "Dicas",
-                    onClick = { /* Ação para Dicas */ }
-                )
-                RoundedButton(
-                    icon = Icons.Default.AccountBox,
-                    text = "Campanha",
-                    onClick = { /* Ação para Campanha */ }
-                )
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-            Text(
-                text = "Você sabia?",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                elevation = CardDefaults.cardElevation(4.dp)
-            ) {
+            item {
                 Row(
                     modifier = Modifier
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.Create,
-                        contentDescription = "lápis",
-                        modifier = Modifier
-                            .size(28.dp)
+                    RoundedButton(
+                        icon = Icons.Default.LocationOn,
+                        text = "Ecopontos",
+                        onClick = { navController.navigate("addressList") }
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        text = "Desde 2020, com a implementação do Decreto n° 10.388, os consumidores podem descartar medicamentos vencidos ou em desuso em farmácias que possuem pontos de coleta.",
-                        style = MaterialTheme.typography.bodyLarge
+                    RoundedButton(
+                        icon = Icons.Default.Refresh,
+                        text = "Materiais",
+                        onClick = { /* Ação para Materiais */ }
+                    )
+                    RoundedButton(
+                        icon = Icons.Default.Delete,
+                        text = "Nova coleta",
+                        onClick = { /* Ação para Nova coleta */ }
                     )
                 }
             }
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                elevation = CardDefaults.cardElevation(4.dp)
-            ) {
+            item {
                 Row(
                     modifier = Modifier
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.Info,
-                        contentDescription = "simbolo de informações",
+                    RoundedButton(
+                        icon = Icons.Default.Warning,
+                        text = "Manuseio",
+                        onClick = { /* Ação para Manuseio */ }
+                    )
+                    RoundedButton(
+                        icon = Icons.Default.Info,
+                        text = "Dicas",
+                        onClick = { /* Ação para Dicas */ }
+                    )
+                    RoundedButton(
+                        icon = Icons.Default.AccountBox,
+                        text = "Campanha",
+                        onClick = { /* Ação para Campanha */ }
+                    )
+                }
+            }
+
+            item {
+                Text(
+                    text = "Você sabia?",
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.padding(vertical = 16.dp)
+                )
+            }
+
+            item {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                    elevation = CardDefaults.cardElevation(4.dp)
+                ) {
+                    Row(
                         modifier = Modifier
-                            .size(28.dp)
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        text = "A reciclagem do óleo de cozinha usado permite a produção de sabão, biodiesel, tintas e outros produtos, contribuindo também para a redução da poluição ambiental.",
-                        style = MaterialTheme.typography.bodyLarge
-                    )
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Create,
+                            contentDescription = "lápis",
+                            modifier = Modifier
+                                .size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text(
+                            text = "Desde 2020, com a implementação do Decreto n° 10.388, os consumidores podem descartar medicamentos vencidos ou em desuso em farmácias que possuem pontos de coleta.",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+                }
+            }
+
+            item {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                    elevation = CardDefaults.cardElevation(4.dp)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = "símbolo de informações",
+                            modifier = Modifier
+                                .size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text(
+                            text = "A reciclagem do óleo de cozinha usado permite a produção de sabão, biodiesel, tintas e outros produtos, contribuindo também para a redução da poluição ambiental.",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
                 }
             }
         }
     }
 }
-
