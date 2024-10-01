@@ -62,7 +62,7 @@ fun MainScreen(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.spacedBy(16.dp) // Ajuste de espaçamento entre os botões
             ) {
                 RoundedButton(
                     icon = Icons.Default.LocationOn,
