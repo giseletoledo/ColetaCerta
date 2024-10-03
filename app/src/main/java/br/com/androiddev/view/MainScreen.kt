@@ -71,17 +71,20 @@ fun MainScreen(navController: NavController) {
                     RoundedButton(
                         icon = Icons.Default.LocationOn,
                         text = "Ecopontos",
-                        onClick = { navController.navigate("addressList") }
+                        onClick = { navController.navigate("addressList") },
+                        modifier = Modifier.weight(1f)
                     )
                     RoundedButton(
                         icon = Icons.Default.Refresh,
                         text = "Materiais",
-                        onClick = { /* Ação para Materiais */ }
+                        onClick = { /* Ação para Materiais */ },
+                        modifier = Modifier.weight(1f)
                     )
                     RoundedButton(
                         icon = Icons.Default.Delete,
                         text = "Nova coleta",
-                        onClick = { /* Ação para Nova coleta */ }
+                        onClick = { /* Ação para Nova coleta */ },
+                        modifier = Modifier.weight(1f)
                     )
                 }
             }
